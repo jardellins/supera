@@ -2,21 +2,21 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image, Dimensions } from "react-native";
 
 import images from '../services/images'
+import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 const ListGames = ({ title, price, image }) => {
     
 return (
     <TouchableOpacity activeOpacity={0.7}>
       <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
         <Image
           source={images[title]}
           resizeMode="contain"
           style={styles.image}
         />
-        <View>
-          <Text>{title}</Text>
-          <Text>{price}</Text>
-        </View>
+        <Text style={styles.price}>R$ {price}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -27,11 +27,32 @@ export default ListGames;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        alignContent: 'center',
+        justifyContent: 'flex-end',
+        marginVertical: 20,
+        paddingHorizontal: 10,
+        width: Dimensions.get('window').width * 0.45,
+        backgroundColor: colors.shape,
+        marginHorizontal: 8,
+      },
+      image: {
+        height: Dimensions.get('window').height * 0.2,
+        alignSelf: 'center'
     },
-    image: {
-        width: Dimensions.get('window').width * 0.4,
-        height: Dimensions.get('window').height * 0.25
-    }
+    title: {
+      fontFamily: fonts.heading,
+      fontSize: 18,
+      color: colors.heading,
+      textAlign: 'center',
+      width: '80%',
+      alignSelf: 'center',
+      marginHorizontal: 7,
+    },
+    price: {
+      fontFamily: fonts.text,
+      fontSize: 17,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 8,
+    },
 })
