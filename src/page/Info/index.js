@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
-import images from "../services/images";
+import images from "../../services/images";
 import colors from '../../styles/colors';
 
 const Info = () => {
