@@ -14,6 +14,8 @@ os passos para a instalação do serviço pode ser encontrado neste link https:/
 
 <br/>
 
+![image](https://user-images.githubusercontent.com/44972197/127588122-226b73be-7b61-4670-9a2d-9d93d2e19405.png)
+
 ## Download do Projeto
 
 ```sh
