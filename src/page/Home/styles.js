@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: colors.blue,
+    height: Dimensions.get('window').height * 0.25
   },
   headerTitle: {
     flexDirection: "row",
@@ -19,15 +20,18 @@ const styles = StyleSheet.create({
   },
   containerInfo: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
+    position: 'absolute',
     margin: 15,
+    right: 0,
+    bottom: 0,
   },
   added: {
     backgroundColor: colors.red,
     width: Dimensions.get('window').width * 0.040,
     height: Dimensions.get('window').height * 0.020,
-    borderRadius: Dimensions.get('window').width * 0.030 / 2,
+    borderRadius: Dimensions.get('window').width * 0.040 / 2,
     position: 'absolute',
     zIndex: 3,
     marginLeft: 25,

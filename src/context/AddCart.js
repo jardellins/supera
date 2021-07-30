@@ -1,24 +1,44 @@
-import {useState, useEffect, createContext, useContext} from 'react'
+import React, {useState, useEffect, createContext, useContext} from 'react'
 
 const CartContext = createContext()
 
-export function UserProvidor({children}) {
-    const [checkout, setCheckout] = useState(0)
+export function UserProvider({children}) {
+    const [total, setTotal] = useState(0)
+    const [items, setItems] = useState([])
 
-    const addCart = (price) => {
-        setCheckout(checkout + price)
+    const addCart = (price, item) => {
+        setTotal(total + price)
+        setItems(items => [...items, item])
     }
 
-    const removeCart = (price) => {
-        setCheckout(checkout - price)
+    const removeCart = (price, item) => {
+        setTotal(total - price)
+
+        let data = []
+        items.map((value, index) => {
+            if(value !== item){
+                data[index] = value
+            }
+
+            setItems(data)
+        })
+    }
+
+    const valuesCart = () => {
+        return {
+            total,
+            items
+        }
     }
 
     return (
         <CartContext.Provider
             value={{
-                checkout,
+                total,
                 addCart,
                 removeCart,
+                items,
+                valuesCart
             }}
         >
             {children}

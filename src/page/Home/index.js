@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import api from "../../services/api";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
+import { getValue } from "../../context/AddCart";
 
 import imgGame from "../../assets/games.png";
 import styles from "./styles";
@@ -11,7 +12,15 @@ import ListSort from "../../components/ListSort";
 const Home = () => {
   const [gamesList, setGamesList] = useState([]);
   const [sort, setSort] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState('');
+  const [selectedOrder, setSelectedOrder] = useState("");
+
+  const { context } = getValue();
+
+  const { valuesCart } = context;
+
+  const { total } = valuesCart();
+
+  console.log(total);
 
   useEffect(() => {
     async function fetchGames() {
@@ -28,7 +37,6 @@ const Home = () => {
   async function handleSelectOrder(order) {
     let newOrder;
 
-    
     switch (order) {
       case "Menor preço":
         newOrder = await api.get("/games?_sort=price&_order=asc");
@@ -51,8 +59,7 @@ const Home = () => {
         setSelectedOrder("Ordem Alfabética");
         break;
     }
-  };
-
+  }
 
   return (
     <View style={styles.container}>
@@ -70,7 +77,7 @@ const Home = () => {
         </View>
         <View style={styles.containerInfo}>
           <TouchableOpacity activeOpacity={0.7}>
-            <View style={styles.added}/>
+            {total > 0 && <View style={styles.added} />}
             <Feather name="shopping-cart" size={30} color="white" />
           </TouchableOpacity>
         </View>
@@ -82,6 +89,7 @@ const Home = () => {
         <Text style={styles.orderTitle}>Ordernar por:</Text>
         <FlatList
           data={sort}
+          keyExtractor={(index) => index}
           renderItem={({ item }) => (
             <ListSort
               title={item}

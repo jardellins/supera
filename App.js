@@ -1,6 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import AppLoading from "expo-app-loading";
+import { UserProvider } from "./src/context/AddCart";
 
 import Routes from "./src/routes";
 
@@ -16,13 +17,12 @@ export default function App() {
     Roboto_700Bold,
   });
 
-  if (!fontsLoaded) 
-    return <AppLoading />;
+  if (!fontsLoaded) return <AppLoading />;
 
   return (
-    <>
-      <StatusBar  backgroundColor="transparent" translucent />
+    <UserProvider>
+      <StatusBar backgroundColor="transparent" translucent />
       <Routes />
-    </>
+    </UserProvider>
   );
 }
