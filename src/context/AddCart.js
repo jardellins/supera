@@ -1,53 +1,55 @@
-import React, {useState, useEffect, createContext, useContext} from 'react'
+import React, { useState, useEffect, createContext, useContext } from "react";
 
-const CartContext = createContext()
+const CartContext = createContext();
 
-export function UserProvider({children}) {
-    const [total, setTotal] = useState(0)
-    const [items, setItems] = useState([])
+export function UserProvider({ children }) {
+  const [total, setTotal] = useState(0);
+  const [items, setItems] = useState([]);
 
-    const addCart = (price, item) => {
-        setTotal(total + price)
-        setItems(items => [...items, item])
+  function addCart(item) {
+      console.log(item)
+    setItems((items) => [...items, item]);
+
+    setTotal(total + item.price);
+  }
+
+  function removeCart(item) {
+    if (total > 0) {
+      const find = items.findIndex((element) => element.title === item.title);
+
+      if (find !== -1) {
+        items.splice(find, 1);
+
+        setTotal(total - item.price);
+      }
     }
+  }
 
-    const removeCart = (price, item) => {
-        setTotal(total - price)
+  function valuesCart() {
+    return {
+      total,
+      items,
+    };
+  }
 
-        let data = []
-        items.map((value, index) => {
-            if(value !== item){
-                data[index] = value
-            }
-
-            setItems(data)
-        })
-    }
-
-    const valuesCart = () => {
-        return {
-            total,
-            items
-        }
-    }
-
-    return (
-        <CartContext.Provider
-            value={{
-                total,
-                addCart,
-                removeCart,
-                items,
-                valuesCart
-            }}
-        >
-            {children}
-        </CartContext.Provider>
-    )
+  return (
+    <CartContext.Provider
+      value={{
+        total,
+        addCart,
+        removeCart,
+        items,
+        valuesCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 export function getValue() {
-    const context = useContext(CartContext)
+  const context = useContext(CartContext);
+  const { total, addCart, removeCart, items, valuesCart } = context;
 
-    return {context}
+  return { total, addCart, removeCart, items, valuesCart };
 }
