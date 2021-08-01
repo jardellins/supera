@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import api from "../../services/api";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 import { getValue } from "../../context/AddCart";
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 
 import imgGame from "../../assets/games.png";
 import styles from "./styles";
@@ -17,9 +17,7 @@ const Home = () => {
 
   const { total } = getValue();
 
-  const navigation = useNavigation()
-
-  console.log(total);
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function fetchGames() {
@@ -75,7 +73,10 @@ const Home = () => {
           />
         </View>
         <View style={styles.containerInfo}>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate("Cart")}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate("Cart")}
+          >
             {total > 0 && <View style={styles.added} />}
             <Feather name="shopping-cart" size={30} color="white" />
           </TouchableOpacity>
