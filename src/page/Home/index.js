@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  RefreshControl,
+} from "react-native";
 import api from "../../services/api";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { getValue } from "../../context/AddCart";
 import { useNavigation } from "@react-navigation/native";
 
@@ -14,6 +21,7 @@ const Home = () => {
   const [gamesList, setGamesList] = useState([]);
   const [sort, setSort] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState("");
+  const [refreshing, setRefreshing] = React.useState(false);
 
   const { total } = getValue();
 
@@ -30,6 +38,15 @@ const Home = () => {
 
     setSort(["Menor preço", "Maior preço", "Relevantes", "Ordem Alfabética"]);
   }, []);
+
+  async function handleRefreshing() {
+    setRefreshing(true);
+    const { data } = await api.get("/games");
+
+    setGamesList(data);
+    setSelectedOrder("");
+    setRefreshing(false);
+  }
 
   async function handleSelectOrder(order) {
     let newOrder;
@@ -109,6 +126,12 @@ const Home = () => {
         )}
         numColumns={2}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => handleRefreshing()}
+          />
+        }
       />
     </View>
   );

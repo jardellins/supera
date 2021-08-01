@@ -9,18 +9,17 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
-
 import images from "../services/images";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 const ListGames = ({ title, price }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("Info", {title, price})}
+      onPress={() => navigation.navigate("Info", { title, price })}
     >
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>

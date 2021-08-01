@@ -17,14 +17,8 @@ const Routes = () => {
           component={Home}
           options={{ headerShown: false }}
         />
-        <AppStack.Screen
-          name="Info"
-          component={Info}
-        />
-        <AppStack.Screen
-          name="Cart"
-          component={Cart}
-        />
+        <AppStack.Screen name="Info" component={Info} />
+        <AppStack.Screen name="Cart" component={Cart} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: colors.blue,
-    height: Dimensions.get('window').height * 0.25
+    height: Dimensions.get("window").height * 0.25,
   },
   headerTitle: {
     flexDirection: "row",
@@ -22,17 +22,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    position: 'absolute',
+    position: "absolute",
     margin: 15,
     right: 0,
     bottom: 0,
   },
   added: {
     backgroundColor: colors.red,
-    width: Dimensions.get('window').width * 0.040,
-    height: Dimensions.get('window').height * 0.020,
-    borderRadius: Dimensions.get('window').width * 0.040 / 2,
-    position: 'absolute',
+    width: Dimensions.get("window").width * 0.04,
+    height: Dimensions.get("window").height * 0.02,
+    borderRadius: (Dimensions.get("window").width * 0.04) / 2,
+    position: "absolute",
     zIndex: 3,
     marginLeft: 25,
   },
@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   orderTitle: {
-      fontFamily: fonts.heading,
-      fontSize: 17,
-      marginHorizontal: 10,
+    fontFamily: fonts.heading,
+    fontSize: 17,
+    marginHorizontal: 10,
   },
 });
 
