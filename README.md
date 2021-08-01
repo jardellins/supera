@@ -10,7 +10,7 @@
 ## :scroll: Pré-requisitos
 
 Para rodar o projeto será nescessário rodar um servidor de API, que para esse projeto foi utilizado o JSON-Server.
-os passos para a instalação do serviço pode ser encontrado neste link https://www.npmjs.com/package/json-server
+os passos para a instalação do serviço pode ser encontrado neste link https://www.npmjs.com/package/json-server, no arquivo da API será nescessário mudar o IP para o da sua máquina.
 
 <br/>
 
