@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
+import { Alert } from "react-native";
 
 const CartContext = createContext();
 
@@ -20,6 +21,7 @@ export function UserProvider({ children }) {
     setItems((items) => [...items, item]);
 
     setTotal(total + item.price);
+    Alert.alert("Adicionado ao carrinho!!")
   }
 
   function removeCart(item) {
@@ -32,6 +34,7 @@ export function UserProvider({ children }) {
 
         countItems.splice(find, 1);
         items.splice(find, 1);
+        Alert.alert("Removido do carrinho!!")
       }
     } else {
       setTotal(0);

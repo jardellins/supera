@@ -50,6 +50,11 @@ const Cart = () => {
               <Text style={styles.textItem}>{item.price}</Text>
             </View>
           ))}
+          {delivery ?
+          <Text>Adicionado R$ 10,00 do frete</Text>  
+          :
+          <Text>Frete grátis nas compra acimas de R$ 250,00</Text>
+        }
           <Text style={styles.total}>
             Total: R${" "}
             {delivery

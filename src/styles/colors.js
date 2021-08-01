@@ -1,7 +1,7 @@
 export default {
   green: "#32b768",
 
-  heading: "#695A84",
+  heading: "#322B3F",
 
   background: "#ffffff",
   shape: "#f0f0f0",
